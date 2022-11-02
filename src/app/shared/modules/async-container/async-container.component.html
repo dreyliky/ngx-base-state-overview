@@ -1,0 +1,13 @@
+<ng-container *ngIf="(isLoading$ | async)">
+    <b>Loading...</b>
+</ng-container>
+
+<ng-container *ngIf="(isError$ | async)">
+    Error while loading data!
+</ng-container>
+
+<ng-container *ngIf="(isLoaded$ | async) as loadedData">
+    <ng-container
+        *ngTemplateOutlet="contentTemplateRef; context: { $implicit: loadedData }">
+    </ng-container>
+</ng-container>

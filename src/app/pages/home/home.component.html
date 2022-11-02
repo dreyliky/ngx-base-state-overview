@@ -1,0 +1,23 @@
+<app-async-container [observable]="users$">
+    <ng-template let-users>
+        <button (click)="onRemoveAllByGenderButtonClick('male')">Remove all male</button>
+
+        <button (click)="onRemoveAllByGenderButtonClick('female')">Remove all female</button>
+
+        <ul>
+            <li *ngFor="let user of users">
+                {{ user.name.first }} {{ user.name.last }}
+
+                <button (click)="onUserDeleteButtonClick(user)">Delete</button>
+            </li>
+        </ul>
+
+        <hr />
+
+        <ol>
+            <li *ngFor="let userEmail of (userEmails$ | async)">
+                {{ userEmail }}
+            </li>
+        </ol>
+    </ng-template>
+</app-async-container>

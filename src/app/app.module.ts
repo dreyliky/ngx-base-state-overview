@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import {
+  NgxBaseStateDevtoolsModule,
+  NgxBaseStateDevtoolsConfig,
+  NGX_BASE_STATE_DEVTOOLS_CONFIG
+} from 'ngx-base-state';
+import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -10,9 +15,18 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgxBaseStateDevtoolsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: NGX_BASE_STATE_DEVTOOLS_CONFIG,
+      useValue: new NgxBaseStateDevtoolsConfig({
+        isEnabled: true
+      })
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
